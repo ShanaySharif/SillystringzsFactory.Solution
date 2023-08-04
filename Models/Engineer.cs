@@ -7,7 +7,8 @@ namespace Engineer.Models
         public int EngineerId { get; set; }
         public string EngineerName { get; set; }
         // public string  License { get; set; }
+        public int MachineId { get; set; }
 
-        public List<MachineEngineer> JoinEntities { get; }
+        public List<EngineerMachine> JoinEntities { get; }
     }
 }
