@@ -44,7 +44,54 @@ namespace Factory.Controllers
 
         public ActionResult Edit(int id)
         {
-            
+            Engineer thisEngineer = _db.Engineers
+            .FirstOrDefault(engineer => engineer.EngineerId == id);
+            return View(thisEngineer);
+        }
+        [HttpPost]
+        public ActionResult Edit (Engineer engineer)
+        {
+            _db.Engineers.Update(engineer);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Engineer thisEngineer = _db.Engineers
+            .FirstOrDefault(engineer => engineer.EngineerId == id);
+            return View(thisEngineer);
+        }
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Engineer thisEngineer = _db.Engineers
+            .FirstOrDefault(engineer => engineer.EngineerId == id);
+            _db.Engineers.Remove(thisEngineer);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddMachine(int id)
+        {
+            Engineer thisEngineer = _db.Engineers
+            .FirstOrDefault(engineers => engineers.EngineerId == id);
+            List<Machine> machines = _db.Machines.ToList();
+            return View(thisEngineer);
+        }
+
+        [HttpPost]
+        public ActionResult AddMachine(Engineer engineer, int machineId)
+        {
+            #nullable enable
+            EngineerMachine? joinEntity = _db.EngineerMachines
+            .FirstOrDefault(join.MachineId == machineId &&join.EngineerId == engineer.EngineerId);
+            #nullable enable
+            if(joinEntity == null && machineId != 0)
+            {
+                _db.EngineerMachines.Add(new EngineerMachine(){MachineId = machineId, EngineerId == engineer.EngineerId});
+                _db.SaveChanges()
+            }
+            return RedirectToAction("Details", new {id = engineer.EngineerId});
         }
 
 
