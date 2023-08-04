@@ -8,6 +8,6 @@ namespace Engineer.Models
         public string EngineerName { get; set; }
         // public string  License { get; set; }
 
-        public List<MachineLicense> JoinEntities { get; }
+        public List<MachineEngineer> JoinEntities { get; }
     }
 }

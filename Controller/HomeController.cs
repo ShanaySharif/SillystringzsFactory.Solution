@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-namespace DoctorsOffice.Controllers
+namespace Factory.Controllers
 {
     public class HomeController : Controller
     {

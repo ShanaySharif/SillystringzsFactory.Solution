@@ -1,19 +1,25 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using DoctorsOffice.Models;
+using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DoctorsOffice.Controllers
+namespace Machines.Controllers
 {
-  public class PatientsController : Controller
+  public class MachinesController : Controller
   {
-    private readonly DoctorsOfficeContext _db;
+    private readonly FactoryContext _db;
 
-    public PatientsController(DoctorsOfficeContext db)
+    public MachinesController(FactoryContext db)
     {
       _db = db;
     }
     public ActionResult Index()
     {
+
+    }
+
+  }
+}
+  
