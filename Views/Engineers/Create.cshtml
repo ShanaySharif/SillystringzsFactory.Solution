@@ -4,15 +4,15 @@
 
 @model Factory.Models.Engineer
 
-<div class="container">
+<div class="text-center">
     <h1>Add a New Engineer</h1>
 </div>
-<hr />
+
 
 <div class="container">
     @using (Html.BeginForm())
     {
-        <div class="form-container">
+        <div class="text-center">
             <div class="form-group">
                 <label class="form-label">@Html.DisplayNameFor(model => model.EngineerName)</label>
                 @Html.TextBoxFor(model => model.EngineerName, new { @class = "form-control" })
@@ -25,9 +25,9 @@
     }
 </div>
 
-<hr />
 
-<div class="container mt-4">
+
+<div class="text-center container mt-5">
     <div class="link-container">
         <p>@Html.ActionLink("Back to All Engineers", "Index", null, new { @class = "btn btn-secondary" })</p>
     </div>
