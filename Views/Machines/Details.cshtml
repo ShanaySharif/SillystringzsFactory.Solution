@@ -1,0 +1,44 @@
+@{
+    Layout = "_Layout";
+}
+@using Factory.Models
+@model Factory.Models.Machine
+
+<div class="container">
+    <h1>Machine Details</h1>
+    <div class="details-container">
+        <div class="detail">
+            <span class="label">@Html.DisplayNameFor(model => model.MachineName):</span>
+            <span class="value">@Html.DisplayFor(model => model.MachineName)</span>
+        </div>
+        <div class="detail">
+            <span class="label">@Html.DisplayNameFor(model => model.ManufactureDate):</span>
+            <span class="value">@Html.DisplayFor(model => model.ManufactureDate)</span>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    @if (Model.JoinEntities.Count == 0)
+    {
+        <p>No engineers are allowed to operate this machine.</p>
+    }
+    else
+    {
+        <h4>Engineers allowed to operate this machine:</h4>
+        <ul>
+            @foreach (EngineerMachine join in Model.JoinEntities)
+            {
+                <li>@join.Engineer.EngineerName</li>
+            }
+        </ul>
+    }
+</div>
+<div class="container">
+    <div class="action-buttons">
+        <p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId }, new { @class = "btn btn-primary" })</p>
+        <p>@Html.ActionLink("Add Machine to Engineer", "AddEngineer", new { id = Model.MachineId }, new { @class = "btn btn-success" })</p>
+        <p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId }, new { @class = "btn btn-danger" })</p>
+        <p>@Html.ActionLink("Back to All Machines", "Index", null, new { @class = "btn btn-secondary" })</p>
+    </div>
+</div>
