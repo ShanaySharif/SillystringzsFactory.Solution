@@ -1,0 +1,35 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<div class="container">
+    <h1>Add a New Machine</h1>
+</div>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-container">
+        <div class="form-group">
+            @Html.LabelFor(model => model.MachineName)
+            @Html.TextBoxFor(model => model.MachineName, new { @class = "form-control" })
+            <p class="text-danger font-weight-bold">@Html.ValidationMessageFor(model => model.MachineName)</p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ManufactureDate)
+            @Html.TextBoxFor(model => model.ManufactureDate, new { @type = "date", @class = "form-control" })
+            <p class="text-danger font-weight-bold">@Html.ValidationMessageFor(model => model.ManufactureDate)</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Add New Machine</button>
+    </div>
+}
+
+<div class="text-center mt-3">
+    <p>@Html.ActionLink("Back to All Machines", "Index")</p>
+</div>
