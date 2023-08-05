@@ -19,12 +19,12 @@ else
         <thead>
             <tr>
                 <th>Machine Name</th>
-                <th>Manufacture Date</th>
+                <th>Production Date</th>
                 <th>Details</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var machine in Model)
+            @foreach (Machine machine in Model)
             {
                 <tr>
                     <td>@machine.MachineName</td>

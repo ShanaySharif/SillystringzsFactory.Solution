@@ -1,31 +1,52 @@
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 @using Factory.Models;
 
-<h1> Welcome to Dr. Silly Stringz's Factory</h1>
-<hr />
+<div class="container">
+    <h1>Welcome to Dr. Silly Stringz's Factory</h1>
+    <hr />
 
-<h4>Machines</h4>
-<p>@Html.ActionLink("Manage Machines", "Index", "Machines")</p>
-@if (Model["machines"] == null || Model["machines"].Length == 0)
-{
-  <p>No machines have been added yet!</p>
-} 
+    <div class="section">
+        <h4>Machines</h4>
+        <p>@Html.ActionLink("Manage Machines", "Index", "Machines", null, new { @class = "btn btn-primary" })</p>
+        @if (Model["machines"] == null || Model["machines"].Length == 0)
+        {
+            <p>No machines have been added yet!</p>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (Engineer engineer in Model["engineers"])
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId })
+                    </li>
+                }
+            </ul>
+        }
+    </div>
 
+    <hr />
 
-<h4>Engineers</h4>
-<p>@Html.ActionLink("Manage Engineers", "Index", "Engineers")</p> 
-@if (Model["engineers"] == null ||Model["engineers"].Length == 0)
-{
-  <p>No engineers have been added just yet!</p>
-} 
-<ul>
-  @foreach (Engineer engineer in Model["engineers"])
-  {
-    <li>@Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId})</li>
-  }
-</ul>
-
-<hr>
+    <div class="section">
+        <h4>Engineers</h4>
+        <p>@Html.ActionLink("Manage Engineers", "Index", "Engineers", null, new { @class = "btn btn-primary" })</p>
+        @if (Model["engineers"] == null || Model["engineers"].Length == 0)
+        {
+            <p>No engineers have been added just yet!</p>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (Engineer engineer in Model["engineers"])
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId })
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
