@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<div class=" text-center">
+    <h1>Delete Machine</h1>
+</div>
+<hr />
+
+<div class=" text-center">
+    <div class="confirmation">
+        <h2>Are you sure you want to delete <span class="machine-name">@Html.DisplayFor(model => model.MachineName)</span>? This action cannot be undone.</h2>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        <div class="center">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+    }
+</div>
+
+<div class=" text-center">
+    <div class="link-container">
+        <p>@Html.ActionLink("Back to All Machines", "Index", null, new { @class = "btn btn-secondary" })</p>
+    </div>
+</div>
