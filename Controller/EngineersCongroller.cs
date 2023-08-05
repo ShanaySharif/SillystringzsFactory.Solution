@@ -76,7 +76,9 @@ namespace Factory.Controllers
         {
             Engineer thisEngineer = _db.Engineers
             .FirstOrDefault(engineers => engineers.EngineerId == id);
-            List<Machine> machines = _db.Machines.ToList();
+
+
+           
             return View(thisEngineer);
         }
 
