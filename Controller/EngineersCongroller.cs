@@ -25,8 +25,8 @@ namespace Factory.Controllers
         }
 
 [HttpPost]
- public ActionResult Create(Engineer engineer)
-        {
+        public ActionResult Create(Engineer engineer)
+        { 
             _db.Engineers.Add(engineer);
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -79,19 +79,19 @@ namespace Factory.Controllers
             return View(thisEngineer);
         }
 
-        [HttpPost]
+         [HttpPost]
         public ActionResult AddMachine(Engineer engineer, int machineId)
-        {
+        {   
             #nullable enable
             EngineerMachine? joinEntity = _db.EngineerMachines
-            .FirstOrDefault(join.MachineId == machineId &&join.EngineerId == engineer.EngineerId);
-            #nullable enable
-            if(joinEntity == null && machineId != 0)
+                                .FirstOrDefault(join => (join.MachineId == machineId && join.EngineerId == engineer.EngineerId));
+            #nullable disable
+            if (joinEntity == null && machineId != 0)
             {
-                _db.EngineerMachines.Add(new EngineerMachine(){MachineId = machineId, EngineerId == engineer.EngineerId});
+                _db.EngineerMachines.Add(new EngineerMachine() { MachineId = machineId, EngineerId = engineer.EngineerId });
                 _db.SaveChanges();
             }
-            return RedirectToAction("Details", new {id = engineer.EngineerId});
+            return RedirectToAction("Details", new { id = engineer.EngineerId });
         }
     }
 }
