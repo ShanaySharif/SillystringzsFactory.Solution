@@ -33,7 +33,8 @@ Within the production directory run the command $ touch appsettings.json.
 -In the appsettings.json file, paste in the following code, replacing [user-id] and [password] with your username and password for MySQL Workbench. (Remember to remove the square brackets when inputting your details): { `"ConnectionStrings": { "DefaultConnection": "Server=localhost;Port=3306;database=factory;uid=[user-id];pwd=[password];" } }``
 Within the production directory "Factory", run $ dotnet ef database update to instantiate the database.
 - Still within the production directory, run $ dotnet watch run in the command line to launch the application in development mode in a browser, and interact with the application.
-##Known Bugs
+## Known Bugs
 - None at this time
-MIT License
+
+## MIT License
 Copyright (c) 2023 Shankaron Mohamed
