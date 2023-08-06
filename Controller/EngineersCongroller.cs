@@ -1,8 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
+
+
+
 
 namespace Factory.Controllers
 {
@@ -76,9 +80,9 @@ namespace Factory.Controllers
         {
             Engineer thisEngineer = _db.Engineers
                             .FirstOrDefault(engineers => engineers.EngineerId == id);
-            // List<Machine> machines = _db.Machines.ToList();
-            // SelectList machineList = new SelectList(machines, "MachineId", "MachineName");
-            // ViewBag.MachineId = machineList;
+            List<Machine> machines = _db.Machines.ToList();
+            SelectList machineList = new SelectList(machines, "MachineId", "MachineName");
+            ViewBag.MachineId = machineList;
             return View(thisEngineer);
         }
 

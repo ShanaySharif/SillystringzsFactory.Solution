@@ -1,0 +1,36 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<div class="container">
+    <h1>Edit Engineer</h1>
+    <h4>Editing: @Html.DisplayFor(model => model.EngineerName)</h4>
+</div>
+<hr />
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="form-container">
+            @Html.HiddenFor(model => model.EngineerId)
+            <div class="form-group">
+                <label class="form-label">@Html.DisplayNameFor(model => model.EngineerName)</label>
+                @Html.EditorFor(model => model.EngineerName, new { @class = "form-control" })
+                <p class="text-danger">@Html.ValidationMessageFor(model => model.EngineerName)</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    }
+</div>
+<hr />
+
+<div class="container">
+    <div class="link-container">
+        <p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId }, new { @class = "btn btn-danger" })</p>
+        <p>@Html.ActionLink("Back to All Engineers", "Index", null, new { @class = "btn btn-secondary" })</p>
+    </div>
+</div>
