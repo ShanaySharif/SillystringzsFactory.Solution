@@ -23,14 +23,14 @@
         }
         else
         {
-            @* <ul class="list-group"> *@
+            <ul class="list-group">
                 @foreach (Machine machine in Model["machines"])
                 {
                     <li class="list-group-item">
-                        @Html.ActionLink(@machine.MachineName, "Details", "Machines", new { id = @machine.MachineId }, new { @class = "link-item" })
-                    </li>
+                         @Html.ActionLink(@machine.MachineName, "Details", "Machines", new { id = @machine.MachineId }, new { @class = "link-item" }) 
+                    </li> 
                 }
-            @* </ul> *@
+            </ul>
         }
     </div>
 
@@ -46,14 +46,14 @@
         }
         else
         {
-            @* <ul class="list-group"> *@
+            <ul class="list-group">
                 @foreach (Engineer engineer in Model["engineers"])
                 {
                     <li class="list-group-item">
                         @Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId }, new { @class = "link-item" })
                     </li>
                 }
-            @* </ul> *@
+            </ul>
         }
     </div>
 </div>
