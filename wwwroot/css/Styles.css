@@ -1,0 +1,17 @@
+
+
+body {
+    background: rgb(191, 178, 203); 
+    text-align: center;
+    margin: auto;
+     width: 50%;
+     padding: 10px;   
+     
+
+     margin: 0;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%)
+}
+

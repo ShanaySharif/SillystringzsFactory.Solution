@@ -8,21 +8,36 @@
     <h1>Engineers</h1>
 </div>
 <hr />
-<div class="container">
-@if (@Model.Count == 0)
-{
-    <p>No engineers have been added</p>
-}
 
-<ul>
-    @foreach (Engineer engineer in Model)
+<div class="container">
+    @if (Model.Count == 0)
     {
-        <li>@Html.ActionLink($"{engineer.EngineerName}", "Details", new { id = engineer.EngineerId })</li>
+        <p>No engineers have been added.</p>
     }
-</ul>
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Engineer Name</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Engineer engineer in Model)
+                {
+                    <tr>
+                        <td>@engineer.EngineerName</td>
+                        <td>@Html.ActionLink("Details", "Details", new { id = engineer.EngineerId })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
 <hr />
+
 <div class="link-container">
-    <p>@Html.ActionLink("Add New Engineer", "Create", "Engineers")</p>
-    <p>@Html.ActionLink("Return Home", "Index", "Home")</p>
+    @Html.ActionLink("Add New Engineer", "Create", "Engineers", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Return Home", "Index", "Home", null, new { @class = "btn btn-secondary" })
 </div>
